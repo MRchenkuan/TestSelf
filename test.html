@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div style='width:800px;margin:0 auto'>
+<span style="font-size: 48px;color: #87481f">胡颖老师牌《辅导员竞赛》自测程序</span><br><br>
+<span id="count" style="font-size: 36px;color: #7fb80e">已得 0 分</span>
+<span id="error" style="font-size: 36px;color: #f05b72">已扣 0 分</span>
+<div id="qb"></div>
+</div>
+</body>
+<script>
+    var students=[
+        {id:'021_033_001',name:'刘存益',pisition:'会计1班班长'},
+        {id:'021_033_002',name:'单余雪',pisition:'会计1班团支书'},
+        {id:'021_033_003',name:'李康铭',pisition:'会计1班副班长（德育）'},
+        {id:'021_033_004',name:'程泉淋',pisition:'会计1班副班长（活动）'},
+        {id:'021_033_005',name:'阳芳',pisition:'会计1班学习委员'},
+        {id:'021_033_006',name:'柳絮颖',pisition:'会计1班文娱委员'},
+        {id:'021_033_007',name:'陈鑫',pisition:'会计1班体育委员'},
+        {id:'021_033_008',name:'李浩',pisition:'会计1班治保委员'},
+        {id:'021_033_009',name:'成梦',pisition:'会计1班生活委员'},
+        {id:'021_033_010',name:'彭佩',pisition:'会计1班女生委员'},
+        {id:'021_033_011',name:'谢颜利',pisition:'会计1班青协委员'},
+        {id:'021_033_012',name:'李锦',pisition:'院吉他协会助理'},
+        {id:'021_033_013',name:'蒋凯鸿',pisition:'院青协助理'},
+        {id:'021_033_014',name:'贺燕',pisition:'院运动协会助理'},
+        {id:'021_033_015',name:'王曹',pisition:'院历史研究会助理'},
+        {id:'021_033_016',name:'卢珊',pisition:'院美术学会助理'},
+        {id:'021_033_017',name:'卞慧',pisition:'会计2班班长'},
+        {id:'021_033_018',name:'丁佳丽',pisition:'会计2班团支书'},
+        {id:'021_033_019',name:'毛婷婷',pisition:'会计2班学习委员'},
+        {id:'021_033_020',name:'粟良娟',pisition:'会计2班文娱委员'},
+        {id:'021_033_021',name:'黎林玲',pisition:'会计2班体育委员'},
+        {id:'021_033_022',name:'姚宝麟',pisition:'会计2班治保委员'},
+        {id:'021_033_023',name:'王媛',pisition:'会计2班宿管委员'},
+        {id:'021_033_024',name:'邱强强',pisition:'会计2班宣传委员'},
+        {id:'021_033_025',name:'林夷玲',pisition:'会计2班心育委员'},
+        {id:'021_033_026',name:'赵静璐',pisition:'会计2班女生委员'},
+        {id:'021_033_027',name:'王亮',pisition:'院运动协会助理'},
+        {id:'021_033_028',name:'张丹妮',pisition:'院艺术团助理'},
+        {id:'021_033_029',name:'曾浩然',pisition:'院青协助理'},
+        {id:'021_033_030',name:'邓弘泰',pisition:'院数学协会助理'},
+        {id:'021_033_031',name:'王英普',pisition:'院英语协会助理'},
+        {id:'021_033_032',name:'许婧',pisition:'会计3班班长'},
+        {id:'021_033_033',name:'吴奕鑫',pisition:'会计3班团支书'},
+        {id:'021_033_034',name:'甘丽晨',pisition:'会计3班副班长（活动）'},
+        {id:'021_033_035',name:'李羿',pisition:'会计3班副班长（德育）'},
+        {id:'021_033_036',name:'唐萍',pisition:'会计3班学习委员'},
+        {id:'021_033_037',name:'赵泽琦',pisition:'会计3班文娱委员'},
+        {id:'021_033_038',name:'吴志远',pisition:'会计3班体育委员'},
+        {id:'021_033_039',name:'周青',pisition:'会计3班组织委员'},
+        {id:'021_033_040',name:'汪耀钟',pisition:'会计3班治保委员'},
+        {id:'021_033_041',name:'皮丽琴',pisition:'会计3班宿管委员'},
+        {id:'021_033_042',name:'孙慧',pisition:'会计3班女生委员'},
+        {id:'021_033_043',name:'林雪妍',pisition:'会计3班生活委员'},
+        {id:'021_033_044',name:'李颖',pisition:'会计3班宣传委员'},
+        {id:'021_033_045',name:'任安琪',pisition:'会计3班纪检委员'},
+        {id:'021_033_046',name:'林君星',pisition:'会计3班青协委员'},
+        {id:'021_033_047',name:'谢丽萍',pisition:'院宿管部助理'},
+        {id:'021_033_048',name:'谢雪倩',pisition:'院模特队助理'},
+        {id:'021_033_049',name:'杨思逸',pisition:'院党支部助理'},
+        {id:'021_033_050',name:'刘欣',pisition:'院街舞团助理'},
+        {id:'021_033_051',name:'童智涛',pisition:'院青协助理'},
+        {id:'021_033_052',name:'胡丹',pisition:'院数学协会助理'},
+        {id:'021_033_053',name:'周青萍',pisition:'院英语协会助理'},
+        {id:'021_033_054',name:'江欢',pisition:'会计3班数学课代表'},
+        {id:'021_033_055',name:'江宛婕',pisition:'院艺术团助理'},
+        {id:'021_033_056',name:'欧阳根妹',pisition:'院运动协会助理'},
+        {id:'021_033_057',name:'唐尧麟',pisition:'院吉他协会助理'},
+        {id:'021_033_058',name:'万应茁',pisition:'旅管1班班长'},
+        {id:'021_033_059',name:'冷健',pisition:'旅管1班团支书'},
+        {id:'021_033_060',name:'王振宇',pisition:'旅管1班副班长（活动）'},
+        {id:'021_033_061',name:'邓徐宇',pisition:'旅管1班副班长（德育）'},
+        {id:'021_033_062',name:'余秀丽',pisition:'旅管1班女生委员'},
+        {id:'021_033_063',name:'陈河雄',pisition:'旅管1班宣传委员'},
+        {id:'021_033_064',name:'李闪闪',pisition:'旅管1班体育委员'},
+        {id:'021_033_065',name:'李烨',pisition:'旅管1班生活委员'},
+        {id:'021_033_066',name:'王艳群',pisition:'旅管1班宿管委员'},
+        {id:'021_033_067',name:'文艺洁',pisition:'旅管1班文娱委员'},
+        {id:'021_033_068',name:'来雪峰',pisition:'院写作协会助理'},
+        {id:'021_033_069',name:'徐莹',pisition:'院学习部助理'},
+        {id:'021_033_070',name:'陈启明',pisition:'旅管2班班长'},
+        {id:'021_033_071',name:'马文',pisition:'旅管2班团支书'},
+        {id:'021_033_072',name:'吴成培',pisition:'旅管2班副班长（活动）'},
+        {id:'021_033_073',name:'陈小凤',pisition:'旅管2班女生委员'},
+        {id:'021_033_074',name:'贺述章',pisition:'旅管2班生活委员'},
+        {id:'021_033_075',name:'董佳豪',pisition:'旅管2班学习委员'},
+        {id:'021_033_076',name:'陈思洁',pisition:'旅管2班宿管委员'},
+        {id:'021_033_077',name:'牛文英',pisition:'旅管2班文娱委员'},
+        {id:'021_033_078',name:'唐方宁',pisition:'旅管2班纪检委员'},
+        {id:'021_033_079',name:'王文蓉',pisition:'院艺术团助理'},
+        {id:'021_033_080',name:'程雨霄',pisition:'院相声协会助理'},
+        {id:'021_033_081',name:'郭程锦',pisition:'校广播电台'},
+        {id:'021_033_082',name:'潘赟',pisition:'院跆拳道协会助理'},
+        {id:'021_033_083',name:'王剑',pisition:'旅管3班班长'},
+        {id:'021_033_084',name:'李婷',pisition:'旅管3班团支书'},
+        {id:'021_033_085',name:'彭佳宇',pisition:'旅管3班副班长（活动）'},
+        {id:'021_033_086',name:'彭超',pisition:'旅管3班学习委员'},
+        {id:'021_033_087',name:'邓提文',pisition:'旅管3班文娱委员'},
+        {id:'021_033_088',name:'田玉栋',pisition:'旅管3班体育委员'},
+        {id:'021_033_089',name:'田梦蝶',pisition:'旅管3班治保委员'},
+        {id:'021_033_090',name:'张帷攀',pisition:'旅管3班组织委员'},
+        {id:'021_033_091',name:'周小燕',pisition:'旅管3班纪检委员'},
+        {id:'021_033_092',name:'贾芊',pisition:'旅管3班宿管委员'},
+        {id:'021_033_093',name:'胡佳幸',pisition:'旅管3班心育委员'},
+        {id:'021_033_094',name:'陈小盼',pisition:'旅管3班生活委员'},
+        {id:'021_033_095',name:'唐君',pisition:'旅管3班青协委员'},
+        {id:'021_033_096',name:'王丹',pisition:'旅管3班英语课代表'},
+        {id:'021_033_097',name:'胡思',pisition:'院阅读协会助理'},
+        {id:'021_033_098',name:'刘佳敏',pisition:'校广播电台'},
+        {id:'021_033_099',name:'罗粮萍',pisition:'院模特队助理'},
+        {id:'021_033_100',name:'邹诗瑶',pisition:'院实践部助理'}];
+
+    students = students.sort(function(){ return Math.random() - 0.5});
+
+    var qb = document.getElementById('qb');
+
+    function setAstudent(std){
+        var rightnumber = Math.floor(Math.random() * 4);
+        var selectiontext = '';
+        switch(rightnumber){
+            case 0:
+                selectiontext=
+                 "<input type=\"radio\" name=\"position\" id='right'/>"+std.pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition;
+                break;
+            case 1:
+                selectiontext=
+                "<input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\" id='right'/>"+std.pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition;
+                break;
+            case 2:
+                selectiontext=
+                "<input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\" id='right'/>"+std.pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition;
+                break;
+            case 3:
+                selectiontext=
+                "<input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\"/>"+students[Math.floor(Math.random() * students.length)].pisition
+                +"<br><input type=\"radio\" name=\"position\" id='right'/>"+std.pisition;
+                break;
+        }
+        qb.innerHTML=
+                "<img style='float:left;margin:20px;' width=300 src=\"./img/"+ std.id+".jpg\"><br>"+
+                "姓名：<input style='height:30px;width200px;font-size:18px;border:5px;' type=\"text\" id=\"name\" data-name='"+ std.name+"' /><br><br>"+selectiontext
+
+    }
+
+    var i=0;
+    setAstudent(students[i++]);
+    cheack();
+    var count=0;
+    var error=0;
+    /*验证正确性*/
+    function cheack(){
+        var studentsname = document.getElementById('name');
+                            studentsname.focus()
+        var resulte={a:false,b:false};
+        studentsname.onblur = function(){
+            if(this.value==this.getAttribute('data-name')){
+                resulte.a = true;
+                this.style.borderColor='#7fb80e';
+                this.style.borderStyle='solid';
+            }else{
+                resulte.a = false;
+                this.style.borderColor='#d93a49';
+                this.style.borderStyle='solid';
+
+
+            }
+        };
+        Array.prototype.some.call(document.getElementsByName('position'),function(it,id,ar){
+            it.onchange = function(){
+                this.id=='right'?resulte.b = true:resulte.b = false;
+                if(resulte.a&&resulte.b){
+                    document.getElementById('qb').innerHTML='fdsafsa';
+                    document.getElementById('count').innerHTML='答对： '+(++count)+' 题';
+                    document.getElementById('error').innerHTML='答错： '+(error)+' 题';
+                    setAstudent(students[i++]);
+                    cheack();
+                }else{
+                    error++;
+                    alert('不对')
+                    studentsname.focus()
+
+                }
+            }
+        })
+    }
+
+</script>
+</html>
